@@ -1,0 +1,44 @@
+{
+    "name": "liamja/{{project}}",
+    "version": "0.1.0",
+    "description": "{{description}}",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Liam Anderson",
+            "email": "liam.anderson.91@gmail.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Liamja\\{{project}}\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Liamja\\{{project}}\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "sensiolabs/security-checker": "^4.1"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.6",
+        "phpstan/phpstan": "^0.10.3",
+        "phpunit/phpunit": "^7",
+        "roave/security-advisories": "dev-master"
+    },
+    "scripts": {
+        "test": [
+            "security-checker security:check",
+            "phpstan analyse --no-progress --level 7 src tests",
+            "phpmd src text cleancode,codesize,controversial,design,naming,unusedcode",
+            "phpunit --testdox"
+        ]
+    }
+}
